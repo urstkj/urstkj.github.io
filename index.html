@@ -3,18 +3,119 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Free web tools and calculators - FD Calculator, and more useful apps by urstkj">
-    <meta name="author" content="urstkj">
-    <title>urstkj - Free Web Tools & Apps</title>
+    <meta name="description" content="Free FD Interest Calculator - Compare monthly payout, quarterly payout, monthly compounding, quarterly compounding & annual payout options. Calculate Fixed Deposit returns instantly.">
+    <meta name="keywords" content="FD calculator, fixed deposit calculator, FD interest calculator, compound interest calculator, monthly payout FD, quarterly compounding, FD maturity calculator, bank FD returns, fixed deposit comparison">
+    <meta name="author" content="FD Calculator">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="FD Interest Calculator - Compare Fixed Deposit Payout Options">
+    <meta property="og:description" content="Calculate and compare FD returns with different payout options - Monthly, Quarterly, Annual payouts and compounding. Find the best FD option for maximum returns.">
+    <meta property="og:image" content="https://example.com/fd-calculator-og.png">
+    <meta property="og:url" content="https://example.com/fd-calculator">
+    <meta property="og:site_name" content="FD Interest Calculator">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="FD Interest Calculator - Compare Fixed Deposit Payout Options">
+    <meta name="twitter:description" content="Calculate and compare FD returns with different payout options. Find the best FD option for maximum returns.">
+    <meta name="twitter:image" content="https://example.com/fd-calculator-twitter.png">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://example.com/fd-calculator">
+
+    <title>FD Interest Calculator | Compare Fixed Deposit Payout & Compounding Options</title>
 
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💰</text></svg>">
 
-    <!-- Open Graph -->
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="urstkj - Free Web Tools & Apps">
-    <meta property="og:description" content="Collection of free web tools and calculators">
-    <meta property="og:url" content="https://urstkj.github.io">
+    <!-- Structured Data / Schema.org -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "FD Interest Calculator",
+        "description": "Calculate and compare Fixed Deposit interest with different payout and compounding options including monthly payout, quarterly payout, monthly compounding, quarterly compounding, and annual payout.",
+        "url": "https://example.com/fd-calculator",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "Any",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "INR"
+        },
+        "featureList": [
+            "Monthly Payout Calculation",
+            "Quarterly Payout Calculation",
+            "Annual Payout Calculation",
+            "Monthly Compounding Calculation",
+            "Quarterly Compounding Calculation",
+            "Side-by-side Comparison",
+            "Effective Yield Calculation"
+        ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "What is the difference between FD payout and compounding?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "In FD payout options, interest is paid out periodically (monthly, quarterly, or annually) to your account. In compounding options, interest is reinvested and added to your principal, earning interest on interest, resulting in higher maturity amounts."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Which FD option gives the highest returns?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Monthly compounding typically gives the highest returns as interest is calculated and added to principal most frequently. However, if you need regular income, payout options are better suited despite lower total returns."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How is FD interest calculated?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "FD interest is calculated using the formula: For simple interest (payout): I = P × R × T. For compound interest: A = P × (1 + r/n)^(n×t), where P is principal, R is annual rate, T is time in years, and n is compounding frequency."
+                }
+            }
+        ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://example.com"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Calculators",
+                "item": "https://example.com/calculators"
+            },
+            {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "FD Interest Calculator",
+                "item": "https://example.com/fd-calculator"
+            }
+        ]
+    }
+    </script>
 
     <style>
         * {
@@ -25,402 +126,840 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: #f5f7fa;
             min-height: 100vh;
+            padding: 20px;
             color: #333;
             line-height: 1.6;
-            background: #e8ecef;
-            background-image:
-                radial-gradient(at 20% 30%, rgba(200, 200, 210, 0.4) 0px, transparent 50%),
-                radial-gradient(at 80% 70%, rgba(180, 190, 200, 0.3) 0px, transparent 50%),
-                radial-gradient(at 40% 80%, rgba(210, 215, 220, 0.4) 0px, transparent 50%);
-            position: relative;
-        }
-
-        /* Subtle animated background shapes */
-        body::before {
-            content: '';
-            position: fixed;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background:
-                radial-gradient(circle at 20% 80%, rgba(255,255,255,0.3) 0%, transparent 25%),
-                radial-gradient(circle at 80% 20%, rgba(200,200,200,0.2) 0%, transparent 25%),
-                radial-gradient(circle at 40% 40%, rgba(230,230,230,0.2) 0%, transparent 30%);
-            animation: float 20s ease-in-out infinite;
-            z-index: -1;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            33% { transform: translate(2%, 2%) rotate(1deg); }
-            66% { transform: translate(-1%, 1%) rotate(-1deg); }
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1100px;
             margin: 0 auto;
-            padding: 40px 20px;
         }
 
-        /* Glass Effect Mixin */
-        .glass {
-            background: rgba(255, 255, 255, 0.25);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            box-shadow:
-                0 8px 32px rgba(0, 0, 0, 0.08),
-                inset 0 1px 0 rgba(255, 255, 255, 0.6);
-        }
-
-        /* Hero Section */
-        .hero {
+        header {
             text-align: center;
-            padding: 80px 20px;
+            margin-bottom: 40px;
+            padding: 30px 0;
         }
 
-        .hero-content {
-            display: inline-block;
-            padding: 50px 60px;
-            border-radius: 24px;
-            background: rgba(255, 255, 255, 0.4);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.6);
-            box-shadow:
-                0 8px 32px rgba(0, 0, 0, 0.08),
-                inset 0 1px 0 rgba(255, 255, 255, 0.8);
-        }
-
-        .hero h1 {
-            font-size: 3rem;
+        h1 {
+            font-size: 2.4rem;
+            color: #1a365d;
             font-weight: 700;
-            margin-bottom: 15px;
-            color: #2d3748;
-            letter-spacing: -0.5px;
+            margin-bottom: 10px;
         }
 
-        .hero p {
-            font-size: 1.15rem;
-            color: #4a5568;
-            max-width: 500px;
-            margin: 0 auto;
+        header p {
+            color: #64748b;
+            font-size: 1.1rem;
         }
 
-        /* Apps Grid */
-        .apps-section {
-            padding: 20px 0 60px;
+        .input-section {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 35px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            border: 1px solid #e2e8f0;
         }
 
         .section-title {
-            text-align: center;
-            color: #2d3748;
-            font-size: 1.4rem;
-            margin-bottom: 40px;
+            font-size: 1.1rem;
             font-weight: 600;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
+            color: #475569;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e2e8f0;
         }
 
-        .apps-grid {
+        .input-group {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
         }
 
-        .app-card {
-            background: rgba(255, 255, 255, 0.5);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.7);
-            border-radius: 20px;
-            padding: 35px;
-            box-shadow:
-                0 8px 32px rgba(0, 0, 0, 0.06),
-                inset 0 1px 0 rgba(255, 255, 255, 0.9);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            text-decoration: none;
-            color: inherit;
-            display: block;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .app-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(255,255,255,0.4) 0%, transparent 60%);
-            pointer-events: none;
-        }
-
-        .app-card:hover {
-            transform: translateY(-8px);
-            box-shadow:
-                0 20px 40px rgba(0, 0, 0, 0.1),
-                inset 0 1px 0 rgba(255, 255, 255, 1);
-            background: rgba(255, 255, 255, 0.65);
-        }
-
-        .app-icon {
-            width: 64px;
-            height: 64px;
-            background: linear-gradient(135deg, rgba(255,255,255,0.8) 0%, rgba(240,240,240,0.6) 100%);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.8);
-            border-radius: 16px;
+        .input-field {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 30px;
-            margin-bottom: 24px;
-            box-shadow:
-                0 4px 15px rgba(0, 0, 0, 0.05),
-                inset 0 1px 0 rgba(255, 255, 255, 1);
-            position: relative;
+            flex-direction: column;
         }
 
-        .app-card h3 {
-            font-size: 1.5rem;
-            color: #1a202c;
-            margin-bottom: 12px;
-            font-weight: 700;
-            position: relative;
-        }
-
-        .app-card p {
-            color: #4a5568;
-            font-size: 0.95rem;
-            margin-bottom: 24px;
-            line-height: 1.75;
-            position: relative;
-        }
-
-        .app-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            position: relative;
-        }
-
-        .tag {
-            background: rgba(255, 255, 255, 0.6);
-            color: #4a5568;
-            padding: 6px 14px;
-            border-radius: 25px;
-            font-size: 0.8rem;
-            font-weight: 500;
-            border: 1px solid rgba(255, 255, 255, 0.8);
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-        }
-
-        .app-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            color: #2d3748;
+        .input-field label {
+            margin-bottom: 8px;
             font-weight: 600;
-            margin-top: 20px;
-            font-size: 0.95rem;
-            position: relative;
-            padding: 10px 20px;
-            background: rgba(255, 255, 255, 0.5);
-            border-radius: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.7);
-            transition: all 0.3s ease;
-        }
-
-        .app-card:hover .app-link {
-            background: rgba(255, 255, 255, 0.8);
-        }
-
-        .app-link svg {
-            width: 18px;
-            height: 18px;
-            transition: transform 0.3s ease;
-        }
-
-        .app-card:hover .app-link svg {
-            transform: translateX(5px);
-        }
-
-        /* Coming Soon Card */
-        .app-card.coming-soon {
-            background: rgba(255, 255, 255, 0.3);
-            border: 1px dashed rgba(150, 150, 150, 0.4);
-        }
-
-        .app-card.coming-soon::before {
-            background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, transparent 60%);
-        }
-
-        .app-card.coming-soon .app-icon {
-            background: rgba(200, 200, 200, 0.3);
-            border-color: rgba(200, 200, 200, 0.5);
-        }
-
-        .coming-badge {
-            display: inline-block;
-            background: rgba(255, 255, 255, 0.7);
-            color: #718096;
-            padding: 5px 12px;
-            border-radius: 8px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            margin-bottom: 12px;
-            border: 1px solid rgba(200, 200, 200, 0.4);
-            position: relative;
-        }
-
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 40px 20px;
-        }
-
-        .footer-content {
-            display: inline-block;
-            padding: 30px 50px;
-            border-radius: 20px;
-            background: rgba(255, 255, 255, 0.35);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
-        }
-
-        .social-links {
-            margin-bottom: 20px;
-        }
-
-        .social-links a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 48px;
-            height: 48px;
-            background: rgba(255, 255, 255, 0.5);
-            border: 1px solid rgba(255, 255, 255, 0.7);
-            border-radius: 14px;
-            margin: 0 8px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-        }
-
-        .social-links a:hover {
-            background: rgba(255, 255, 255, 0.8);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-        }
-
-        .social-links svg {
-            width: 22px;
-            height: 22px;
-            fill: #4a5568;
-        }
-
-        footer p {
-            color: #4a5568;
+            color: #374151;
             font-size: 0.9rem;
         }
 
+        .input-field label span {
+            font-weight: 400;
+            color: #9ca3af;
+        }
+
+        .input-field input {
+            padding: 14px 16px;
+            border: 2px solid #e5e7eb;
+            border-radius: 10px;
+            background: #f9fafb;
+            color: #1f2937;
+            font-size: 1rem;
+            transition: all 0.2s ease;
+        }
+
+        .input-field input:hover {
+            border-color: #d1d5db;
+        }
+
+        .input-field input:focus {
+            outline: none;
+            border-color: #3b82f6;
+            background: #ffffff;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .input-field input::placeholder {
+            color: #9ca3af;
+        }
+
+        .calculate-btn {
+            display: block;
+            width: 100%;
+            max-width: 280px;
+            margin: 30px auto 0;
+            padding: 16px 32px;
+            background: #3b82f6;
+            border: none;
+            border-radius: 10px;
+            color: #ffffff;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 14px rgba(59, 130, 246, 0.4);
+        }
+
+        .calculate-btn:hover {
+            background: #2563eb;
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.5);
+        }
+
+        .calculate-btn:active {
+            transform: translateY(0);
+        }
+
+        .results-section {
+            display: none;
+        }
+
+        .results-section.active {
+            display: block;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            color: #1a365d;
+            margin-bottom: 25px;
+            font-weight: 700;
+        }
+
+        .summary {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 20px 25px;
+            margin-bottom: 30px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        .summary-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+        }
+
+        .summary-item {
+            text-align: center;
+        }
+
+        .summary-item .label {
+            font-size: 0.85rem;
+            color: #64748b;
+            margin-bottom: 4px;
+        }
+
+        .summary-item .value {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #1e40af;
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 35px;
+        }
+
+        .result-card {
+            background: #ffffff;
+            border-radius: 14px;
+            padding: 25px;
+            transition: all 0.2s ease;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        .result-card:hover {
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            transform: translateY(-2px);
+        }
+
+        .result-card.best {
+            border: 2px solid #10b981;
+            background: linear-gradient(to bottom, #ecfdf5, #ffffff);
+        }
+
+        .best-badge {
+            display: inline-block;
+            background: #10b981;
+            color: #ffffff;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .card-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: #1e293b;
+        }
+
+        .card-description {
+            color: #64748b;
+            font-size: 0.875rem;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .card-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 12px 0;
+            font-size: 0.95rem;
+        }
+
+        .card-row .label {
+            color: #64748b;
+        }
+
+        .card-row .value {
+            color: #1e293b;
+            font-weight: 600;
+        }
+
+        .card-row.total {
+            margin-top: 18px;
+            padding-top: 18px;
+            border-top: 2px solid #f1f5f9;
+        }
+
+        .card-row.total .label {
+            color: #1e293b;
+            font-weight: 600;
+        }
+
+        .card-row.total .value {
+            color: #3b82f6;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .card-row.interest .value {
+            color: #059669;
+        }
+
+        .comparison-section {
+            background: #ffffff;
+            border-radius: 14px;
+            padding: 30px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+
+        .comparison-section h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 20px;
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 600px;
+        }
+
+        th, td {
+            padding: 14px 16px;
+            text-align: left;
+        }
+
+        th {
+            background: #f8fafc;
+            color: #475569;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        th:not(:first-child) {
+            text-align: right;
+        }
+
+        td:not(:first-child) {
+            text-align: right;
+        }
+
+        tr {
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        tr:hover {
+            background: #f8fafc;
+        }
+
+        td {
+            color: #475569;
+            font-size: 0.95rem;
+        }
+
+        td:first-child {
+            font-weight: 600;
+            color: #1e293b;
+        }
+
+        .highlight-row {
+            background: #f0fdf4 !important;
+        }
+
+        .highlight-row td {
+            color: #166534 !important;
+            font-weight: 600;
+        }
+
+        .highlight-row td:first-child::before {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: #10b981;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        /* SEO Content Section */
+        .seo-content {
+            background: #ffffff;
+            border-radius: 14px;
+            padding: 35px;
+            margin-top: 40px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        .seo-content h2 {
+            font-size: 1.4rem;
+            color: #1a365d;
+            margin-bottom: 15px;
+            margin-top: 30px;
+        }
+
+        .seo-content h2:first-child {
+            margin-top: 0;
+        }
+
+        .seo-content h3 {
+            font-size: 1.1rem;
+            color: #334155;
+            margin-bottom: 10px;
+            margin-top: 20px;
+        }
+
+        .seo-content p {
+            color: #475569;
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        .seo-content ul {
+            color: #475569;
+            margin-left: 25px;
+            margin-bottom: 15px;
+        }
+
+        .seo-content li {
+            margin-bottom: 8px;
+            line-height: 1.7;
+        }
+
+        .seo-content strong {
+            color: #1e293b;
+        }
+
+        .formula-box {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            color: #334155;
+            overflow-x: auto;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            margin-top: 30px;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #e2e8f0;
+            padding: 20px 0;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-question {
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 10px;
+            font-size: 1.05rem;
+        }
+
+        .faq-answer {
+            color: #475569;
+            line-height: 1.7;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 25px;
+            color: #94a3b8;
+            font-size: 0.875rem;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        footer p {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        footer nav {
+            margin-top: 15px;
+        }
+
+        footer nav a {
+            color: #64748b;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        footer nav a:hover {
+            color: #3b82f6;
+            text-decoration: underline;
+        }
+
         @media (max-width: 768px) {
-            .hero {
-                padding: 50px 15px;
+            body {
+                padding: 15px;
             }
 
-            .hero-content {
-                padding: 35px 25px;
+            h1 {
+                font-size: 1.8rem;
             }
 
-            .hero h1 {
-                font-size: 2rem;
+            .input-section {
+                padding: 25px 20px;
             }
 
-            .hero p {
-                font-size: 1rem;
+            .result-card {
+                padding: 20px;
             }
 
-            .apps-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .container {
+            .comparison-section {
                 padding: 20px 15px;
             }
 
-            .app-card {
-                padding: 28px;
+            th, td {
+                padding: 12px 10px;
             }
 
-            .footer-content {
-                padding: 25px 30px;
+            .seo-content {
+                padding: 25px 20px;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <header class="hero">
-            <div class="hero-content">
-                <h1>Free Web Tools</h1>
-                <p>A collection of useful calculators and tools built with simplicity in mind. No ads, no tracking, completely free.</p>
-            </div>
+        <header>
+            <h1>FD Interest Calculator</h1>
+            <p>Compare Fixed Deposit payout and compounding options to maximize your returns</p>
         </header>
 
-        <section class="apps-section">
-            <h2 class="section-title">Apps & Tools</h2>
-
-            <div class="apps-grid">
-                <!-- FD Calculator -->
-                <a href="./fd-calculator.html" class="app-card">
-                    <div class="app-icon">💰</div>
-                    <h3>FD Interest Calculator</h3>
-                    <p>Compare Fixed Deposit payout and compounding options. Calculate monthly payout, quarterly payout, monthly compounding, quarterly compounding, and annual payout to maximize your returns.</p>
-                    <div class="app-tags">
-                        <span class="tag">Finance</span>
-                        <span class="tag">Calculator</span>
-                        <span class="tag">Investment</span>
+        <main>
+            <section class="input-section" aria-label="FD Calculator Input">
+                <h2 class="section-title">Enter Your FD Details</h2>
+                <form id="fdForm" onsubmit="event.preventDefault(); calculateFD();">
+                    <div class="input-group">
+                        <div class="input-field">
+                            <label for="principal">Principal Amount <span>(in Rupees)</span></label>
+                            <input type="number" id="principal" name="principal" placeholder="e.g., 100000" min="1" required aria-describedby="principal-help">
+                        </div>
+                        <div class="input-field">
+                            <label for="rate">Interest Rate <span>(% per annum)</span></label>
+                            <input type="number" id="rate" name="rate" placeholder="e.g., 7.5" step="0.01" min="0.01" required aria-describedby="rate-help">
+                        </div>
+                        <div class="input-field">
+                            <label for="tenure">Tenure <span>(in Months)</span></label>
+                            <input type="number" id="tenure" name="tenure" placeholder="e.g., 12" min="1" required aria-describedby="tenure-help">
+                        </div>
                     </div>
-                    <span class="app-link">
-                        Open App
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M5 12h14M12 5l7 7-7 7"/>
-                        </svg>
-                    </span>
-                </a>
+                    <button type="submit" class="calculate-btn">Calculate & Compare</button>
+                </form>
+            </section>
 
-                <!-- Placeholder for more apps -->
-                <div class="app-card coming-soon">
-                    <div class="app-icon">🔧</div>
-                    <span class="coming-badge">Coming Soon</span>
-                    <h3>More Tools</h3>
-                    <p>More useful tools and calculators are on the way. Stay tuned for updates!</p>
-                    <div class="app-tags">
-                        <span class="tag">Utilities</span>
-                        <span class="tag">Productivity</span>
+            <section class="results-section" id="results" aria-label="Calculation Results">
+                <h2>Comparison Results</h2>
+
+                <div class="summary" id="summary" role="region" aria-label="Summary"></div>
+
+                <div class="results-grid" id="resultsGrid" role="region" aria-label="Detailed Results"></div>
+
+                <div class="comparison-section">
+                    <h3>Detailed Comparison Table</h3>
+                    <div class="table-wrapper">
+                        <table id="comparisonTable" aria-label="FD Options Comparison">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Option</th>
+                                    <th scope="col">Interest Earned</th>
+                                    <th scope="col">Maturity Amount</th>
+                                    <th scope="col">Effective Yield</th>
+                                    <th scope="col">Monthly Income</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tableBody"></tbody>
+                        </table>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
+
+            <!-- SEO Content Section -->
+            <article class="seo-content">
+                <h2>How to Use the FD Interest Calculator</h2>
+                <p>Our Fixed Deposit (FD) Interest Calculator helps you compare different interest payout and compounding options offered by banks in India. Simply enter your principal amount, the annual interest rate offered by your bank, and the tenure of your FD to instantly see how much you'll earn with each option.</p>
+
+                <h2>Understanding FD Payout vs Compounding Options</h2>
+
+                <h3>Monthly Payout</h3>
+                <p>With monthly payout, the bank calculates simple interest and credits it to your savings account every month. This option is ideal for retirees or those who need regular monthly income. However, since interest is paid out and not reinvested, total returns are lower than compounding options.</p>
+
+                <h3>Monthly Compounding</h3>
+                <p>In monthly compounding, interest is calculated every month and added back to the principal. This means you earn interest on interest, resulting in the highest possible returns. This option is best if you don't need regular income and want maximum wealth growth.</p>
+
+                <h3>Quarterly Payout</h3>
+                <p>Similar to monthly payout, but interest is paid out every three months (quarterly). This provides periodic income while being slightly more convenient than monthly payouts for some investors.</p>
+
+                <h3>Quarterly Compounding</h3>
+                <p>Interest is calculated and compounded every quarter. While returns are slightly lower than monthly compounding, it's still significantly better than payout options for long-term wealth creation.</p>
+
+                <h3>Annual Payout</h3>
+                <p>Interest is calculated and paid out once a year. This option suits those who prefer annual income or want to reinvest the interest elsewhere annually.</p>
+
+                <h2>FD Interest Calculation Formulas</h2>
+
+                <h3>Simple Interest (for Payout Options)</h3>
+                <div class="formula-box">
+                    Interest = Principal × Rate × Time<br>
+                    I = P × R × T
+                </div>
+
+                <h3>Compound Interest Formula</h3>
+                <div class="formula-box">
+                    Maturity Amount = P × (1 + r/n)^(n×t)<br>
+                    Where:<br>
+                    P = Principal amount<br>
+                    r = Annual interest rate (decimal)<br>
+                    n = Compounding frequency per year<br>
+                    t = Time in years
+                </div>
+
+                <h2>Which FD Option Should You Choose?</h2>
+                <ul>
+                    <li><strong>For Maximum Returns:</strong> Choose Monthly Compounding if you don't need regular income and want to maximize your maturity amount.</li>
+                    <li><strong>For Regular Income:</strong> Choose Monthly or Quarterly Payout if you need periodic income for expenses.</li>
+                    <li><strong>For Balanced Approach:</strong> Choose Quarterly Compounding for good returns with moderate compounding benefits.</li>
+                </ul>
+
+                <h2>Benefits of Using Our FD Calculator</h2>
+                <ul>
+                    <li>Compare all 5 FD options side by side instantly</li>
+                    <li>See effective yield percentage for each option</li>
+                    <li>Calculate exact monthly income for payout options</li>
+                    <li>Identify the best option for maximum returns</li>
+                    <li>Works with any bank's FD interest rates</li>
+                    <li>No registration required - completely free to use</li>
+                </ul>
+
+                <section class="faq-section">
+                    <h2>Frequently Asked Questions (FAQ)</h2>
+
+                    <div class="faq-item">
+                        <h3 class="faq-question">What is the difference between FD payout and compounding?</h3>
+                        <p class="faq-answer">In FD payout options, interest is paid out periodically (monthly, quarterly, or annually) to your savings account. You receive regular income but earn less overall. In compounding options, interest is reinvested and added to your principal, earning "interest on interest," which results in higher maturity amounts but no regular income during the tenure.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3 class="faq-question">Which FD option gives the highest returns?</h3>
+                        <p class="faq-answer">Monthly compounding typically gives the highest returns because interest is calculated and added to the principal most frequently (12 times a year). This maximizes the compound interest effect. Quarterly compounding comes second, followed by simple interest options.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3 class="faq-question">Is FD interest taxable in India?</h3>
+                        <p class="faq-answer">Yes, FD interest is fully taxable in India and added to your total income. If total FD interest from a bank exceeds Rs. 40,000 (Rs. 50,000 for senior citizens) in a financial year, the bank deducts TDS at 10%. You can submit Form 15G/15H to avoid TDS if your total income is below the taxable limit.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3 class="faq-question">How is effective yield different from the stated interest rate?</h3>
+                        <p class="faq-answer">The stated interest rate is the nominal annual rate offered by the bank. Effective yield shows your actual annual return after accounting for compounding. For compounding FDs, the effective yield is higher than the stated rate because you earn interest on interest.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3 class="faq-question">Can I change my FD from payout to compounding after opening?</h3>
+                        <p class="faq-answer">Generally, you cannot change the interest payout option after opening an FD. You would need to close the existing FD (which may attract a penalty) and open a new one with your preferred option. It's important to choose the right option at the time of opening your FD.</p>
+                    </div>
+                </section>
+            </article>
+        </main>
 
         <footer>
-            <div class="footer-content">
-                <div class="social-links">
-                    <a href="https://github.com/urstkj" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                        </svg>
-                    </a>
-                </div>
-                <p>&copy; 2024 urstkj. All tools are free to use.</p>
-            </div>
+            <p>Disclaimer: Calculations are based on standard FD interest formulas. Actual returns may vary based on bank policies, TDS deductions, and premature withdrawal penalties.</p>
+            <nav aria-label="Footer Navigation">
+                <a href="#" aria-label="Privacy Policy">Privacy Policy</a>
+                <a href="#" aria-label="Terms of Service">Terms of Service</a>
+                <a href="#" aria-label="Contact Us">Contact</a>
+            </nav>
+            <p style="margin-top: 15px;">&copy; 2024 FD Interest Calculator. All rights reserved.</p>
         </footer>
     </div>
+
+    <script>
+        function formatCurrency(amount) {
+            return new Intl.NumberFormat('en-IN', {
+                style: 'currency',
+                currency: 'INR',
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            }).format(amount);
+        }
+
+        function calculateFD() {
+            const principal = parseFloat(document.getElementById('principal').value);
+            const annualRate = parseFloat(document.getElementById('rate').value);
+            const tenureMonths = parseInt(document.getElementById('tenure').value);
+
+            if (!principal || !annualRate || !tenureMonths) {
+                alert('Please fill in all fields with valid values');
+                return;
+            }
+
+            const tenureYears = tenureMonths / 12;
+            const r = annualRate / 100;
+
+            // 1. Monthly Payout (Simple Interest paid monthly)
+            const monthlyPayoutInterest = (principal * r * tenureYears);
+            const monthlyPayoutMonthlyIncome = (principal * r) / 12;
+            const monthlyPayoutMaturity = principal + monthlyPayoutInterest;
+
+            // 2. Monthly Compounding (Interest compounded monthly, paid at maturity)
+            const monthlyCompoundingMaturity = principal * Math.pow((1 + r/12), tenureMonths);
+            const monthlyCompoundingInterest = monthlyCompoundingMaturity - principal;
+
+            // 3. Quarterly Payout (Simple Interest paid quarterly)
+            const quarterlyPayoutInterest = (principal * r * tenureYears);
+            const quarterlyPayoutQuarterlyIncome = (principal * r) / 4;
+            const quarterlyPayoutMaturity = principal + quarterlyPayoutInterest;
+
+            // 4. Quarterly Compounding (Interest compounded quarterly, paid at maturity)
+            const quarters = tenureMonths / 3;
+            const quarterlyCompoundingMaturity = principal * Math.pow((1 + r/4), quarters);
+            const quarterlyCompoundingInterest = quarterlyCompoundingMaturity - principal;
+
+            // 5. Annual Payout (Simple Interest paid annually)
+            const annualPayoutInterest = (principal * r * tenureYears);
+            const annualPayoutAnnualIncome = (principal * r);
+            const annualPayoutMaturity = principal + annualPayoutInterest;
+
+            // Create results array
+            const results = [
+                {
+                    name: 'Monthly Payout',
+                    description: 'Interest paid out every month',
+                    interest: monthlyPayoutInterest,
+                    maturity: monthlyPayoutMaturity,
+                    monthlyIncome: monthlyPayoutMonthlyIncome,
+                    effectiveYield: (monthlyPayoutInterest / principal / tenureYears) * 100,
+                    type: 'payout'
+                },
+                {
+                    name: 'Monthly Compounding',
+                    description: 'Interest compounded monthly, paid at maturity',
+                    interest: monthlyCompoundingInterest,
+                    maturity: monthlyCompoundingMaturity,
+                    monthlyIncome: 0,
+                    effectiveYield: (monthlyCompoundingInterest / principal / tenureYears) * 100,
+                    type: 'compounding'
+                },
+                {
+                    name: 'Quarterly Payout',
+                    description: 'Interest paid out every quarter',
+                    interest: quarterlyPayoutInterest,
+                    maturity: quarterlyPayoutMaturity,
+                    monthlyIncome: quarterlyPayoutQuarterlyIncome / 3,
+                    effectiveYield: (quarterlyPayoutInterest / principal / tenureYears) * 100,
+                    type: 'payout'
+                },
+                {
+                    name: 'Quarterly Compounding',
+                    description: 'Interest compounded quarterly, paid at maturity',
+                    interest: quarterlyCompoundingInterest,
+                    maturity: quarterlyCompoundingMaturity,
+                    monthlyIncome: 0,
+                    effectiveYield: (quarterlyCompoundingInterest / principal / tenureYears) * 100,
+                    type: 'compounding'
+                },
+                {
+                    name: 'Annual Payout',
+                    description: 'Interest paid out yearly',
+                    interest: annualPayoutInterest,
+                    maturity: annualPayoutMaturity,
+                    monthlyIncome: annualPayoutAnnualIncome / 12,
+                    effectiveYield: (annualPayoutInterest / principal / tenureYears) * 100,
+                    type: 'payout'
+                }
+            ];
+
+            // Find best option (highest maturity)
+            const bestOption = results.reduce((max, item) =>
+                item.maturity > max.maturity ? item : max, results[0]);
+
+            // Display summary
+            document.getElementById('summary').innerHTML = `
+                <div class="summary-grid">
+                    <div class="summary-item">
+                        <div class="label">Principal Amount</div>
+                        <div class="value">${formatCurrency(principal)}</div>
+                    </div>
+                    <div class="summary-item">
+                        <div class="label">Interest Rate</div>
+                        <div class="value">${annualRate}% p.a.</div>
+                    </div>
+                    <div class="summary-item">
+                        <div class="label">Tenure</div>
+                        <div class="value">${tenureMonths} months</div>
+                    </div>
+                    <div class="summary-item">
+                        <div class="label">Best Returns</div>
+                        <div class="value">${bestOption.name}</div>
+                    </div>
+                </div>
+            `;
+
+            // Display cards
+            let cardsHTML = '';
+            results.forEach(result => {
+                const isBest = result === bestOption;
+                cardsHTML += `
+                    <article class="result-card ${isBest ? 'best' : ''}">
+                        ${isBest ? '<span class="best-badge">Best Returns</span>' : ''}
+                        <h3 class="card-title">${result.name}</h3>
+                        <p class="card-description">${result.description}</p>
+                        <div class="card-row">
+                            <span class="label">Principal</span>
+                            <span class="value">${formatCurrency(principal)}</span>
+                        </div>
+                        <div class="card-row interest">
+                            <span class="label">Interest Earned</span>
+                            <span class="value">${formatCurrency(result.interest)}</span>
+                        </div>
+                        <div class="card-row">
+                            <span class="label">Effective Yield</span>
+                            <span class="value">${result.effectiveYield.toFixed(2)}% p.a.</span>
+                        </div>
+                        ${result.type === 'payout' ? `
+                        <div class="card-row">
+                            <span class="label">Monthly Income</span>
+                            <span class="value">${formatCurrency(result.monthlyIncome)}</span>
+                        </div>` : ''}
+                        <div class="card-row total">
+                            <span class="label">Maturity Amount</span>
+                            <span class="value">${formatCurrency(result.maturity)}</span>
+                        </div>
+                    </article>
+                `;
+            });
+            document.getElementById('resultsGrid').innerHTML = cardsHTML;
+
+            // Display comparison table
+            let tableHTML = '';
+            results.forEach(result => {
+                const isBest = result === bestOption;
+                tableHTML += `
+                    <tr class="${isBest ? 'highlight-row' : ''}">
+                        <td>${result.name}</td>
+                        <td>${formatCurrency(result.interest)}</td>
+                        <td>${formatCurrency(result.maturity)}</td>
+                        <td>${result.effectiveYield.toFixed(2)}%</td>
+                        <td>${result.monthlyIncome > 0 ? formatCurrency(result.monthlyIncome) : '-'}</td>
+                    </tr>
+                `;
+            });
+            document.getElementById('tableBody').innerHTML = tableHTML;
+
+            // Show results section
+            document.getElementById('results').classList.add('active');
+
+            // Scroll to results
+            document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Allow Enter key to trigger calculation
+        document.querySelectorAll('input').forEach(input => {
+            input.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    calculateFD();
+                }
+            });
+        });
+    </script>
 </body>
 </html>
