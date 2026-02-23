@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Todo List - Password Protected</title>
+    <meta name="robots" content="noindex, nofollow">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f5f5;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .container {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 40px;
+            width: 100%;
+            max-width: 500px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e0e0e0;
+        }
+        h1 {
+            color: #1a1a1a;
+            text-align: center;
+            margin-bottom: 8px;
+            font-size: 24px;
+        }
+        .subtitle {
+            color: #666;
+            text-align: center;
+            font-size: 13px;
+            margin-bottom: 25px;
+        }
+        .input-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            color: #333;
+            margin-bottom: 8px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        input[type="password"],
+        input[type="text"] {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #d0d0d0;
+            border-radius: 10px;
+            background: #fafafa;
+            color: #1a1a1a;
+            font-size: 16px;
+            outline: none;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        input:focus {
+            border-color: #1a1a1a;
+            box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.05);
+        }
+        input::placeholder {
+            color: #999;
+        }
+        .btn {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 10px;
+            background: #1a1a1a;
+            color: #fff;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .btn:hover {
+            background: #333;
+        }
+        .btn-outline {
+            background: transparent;
+            border: 1px solid #d0d0d0;
+            color: #1a1a1a;
+        }
+        .btn-outline:hover {
+            background: #f5f5f5;
+        }
+        .error {
+            color: #dc2626;
+            text-align: center;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        .hidden {
+            display: none !important;
+        }
+
+        /* Todo App Styles */
+        .todo-input-container {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .todo-input-container input {
+            flex: 1;
+        }
+        .todo-input-container .btn {
+            width: auto;
+            padding: 14px 20px;
+        }
+        .todo-list {
+            list-style: none;
+        }
+        .todo-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            background: #f8f8f8;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #e8e8e8;
+            transition: all 0.3s;
+        }
+        .todo-item:hover {
+            border-color: #d0d0d0;
+        }
+        .todo-item.completed {
+            opacity: 0.6;
+        }
+        .todo-item.completed .todo-text {
+            text-decoration: line-through;
+            color: #888;
+        }
+        .todo-checkbox {
+            width: 22px;
+            height: 22px;
+            border: 2px solid #d0d0d0;
+            border-radius: 6px;
+            margin-right: 12px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+            flex-shrink: 0;
+        }
+        .todo-checkbox:hover {
+            border-color: #1a1a1a;
+        }
+        .todo-item.completed .todo-checkbox {
+            background: #1a1a1a;
+            border-color: #1a1a1a;
+        }
+        .todo-checkbox svg {
+            width: 14px;
+            height: 14px;
+            stroke: #fff;
+            opacity: 0;
+        }
+        .todo-item.completed .todo-checkbox svg {
+            opacity: 1;
+        }
+        .todo-text {
+            flex: 1;
+            color: #1a1a1a;
+            font-size: 15px;
+            word-break: break-word;
+        }
+        .todo-delete {
+            width: 32px;
+            height: 32px;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+            flex-shrink: 0;
+        }
+        .todo-delete:hover {
+            background: #fee2e2;
+        }
+        .todo-delete svg {
+            width: 18px;
+            height: 18px;
+            stroke: #dc2626;
+        }
+        .empty-state {
+            text-align: center;
+            padding: 40px 20px;
+            color: #888;
+        }
+        .empty-state svg {
+            width: 48px;
+            height: 48px;
+            stroke: #d0d0d0;
+            margin-bottom: 15px;
+        }
+        .todo-stats {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 0;
+            border-top: 1px solid #e8e8e8;
+            margin-top: 20px;
+            font-size: 13px;
+            color: #666;
+        }
+        .clear-completed {
+            color: #dc2626;
+            cursor: pointer;
+            background: none;
+            border: none;
+            font-size: 13px;
+        }
+        .clear-completed:hover {
+            text-decoration: underline;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid #e8e8e8;
+            color: #888;
+            font-size: 12px;
+        }
+        .footer .heart {
+            color: #dc2626;
+        }
+        .footer a {
+            color: #1a1a1a;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        .logout-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 8px 16px;
+            font-size: 13px;
+            border-radius: 8px;
+        }
+        .setup-note {
+            background: #f8f8f8;
+            border: 1px solid #e8e8e8;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+            font-size: 13px;
+            color: #666;
+        }
+        .setup-note strong {
+            color: #1a1a1a;
+        }
+    </style>
+</head>
+<body>
+    <!-- Login Screen -->
+    <div class="container" id="loginScreen">
+        <h1>My Todo</h1>
+        <p class="subtitle">Enter password to access your todos</p>
+        <div class="input-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" placeholder="Enter your password" autocomplete="current-password">
+        </div>
+        <button class="btn" onclick="login()">Unlock</button>
+        <div class="error hidden" id="loginError">Incorrect password</div>
+
+        <div class="footer">
+            <p>Made with <span class="heart">&hearts;</span> by <a href="https://urstkj.github.io" target="_blank">urstkj</a></p>
+        </div>
+    </div>
+
+    <!-- Setup Screen (First Time) -->
+    <div class="container hidden" id="setupScreen">
+        <h1>Setup Password</h1>
+        <p class="subtitle">Create a password to protect your todos</p>
+        <div class="setup-note">
+            <strong>Note:</strong> This password is stored locally in your browser. If you clear browser data, you'll need to set up again.
+        </div>
+        <div class="input-group">
+            <label for="newPassword">New Password</label>
+            <input type="password" id="newPassword" placeholder="Create a password">
+        </div>
+        <div class="input-group">
+            <label for="confirmPassword">Confirm Password</label>
+            <input type="password" id="confirmPassword" placeholder="Confirm your password">
+        </div>
+        <button class="btn" onclick="setupPassword()">Set Password</button>
+        <div class="error hidden" id="setupError"></div>
+    </div>
+
+    <!-- Todo App Screen -->
+    <div class="container hidden" id="todoScreen">
+        <button class="btn btn-outline logout-btn" onclick="logout()">Lock</button>
+        <h1>My Todo</h1>
+        <p class="subtitle" id="greeting">What needs to be done?</p>
+
+        <div class="todo-input-container">
+            <input type="text" id="todoInput" placeholder="Add a new task..." onkeypress="handleKeyPress(event)">
+            <button class="btn" onclick="addTodo()">Add</button>
+        </div>
+
+        <ul class="todo-list" id="todoList"></ul>
+
+        <div class="empty-state hidden" id="emptyState">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+            </svg>
+            <p>No tasks yet. Add one above!</p>
+        </div>
+
+        <div class="todo-stats hidden" id="todoStats">
+            <span id="todoCount">0 tasks remaining</span>
+            <button class="clear-completed" onclick="clearCompleted()">Clear completed</button>
+        </div>
+
+        <div class="footer">
+            <p>Made with <span class="heart">&hearts;</span> by <a href="https://urstkj.github.io" target="_blank">urstkj</a></p>
+        </div>
+    </div>
+
+    <script>
+        // Simple hash function for password (not cryptographically secure, but sufficient for client-side protection)
+        async function hashPassword(password) {
+            const encoder = new TextEncoder();
+            const data = encoder.encode(password + 'todo_salt_2024');
+            const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+        }
+
+        // Check if password is set up
+        function isSetup() {
+            return localStorage.getItem('todo_password_hash') !== null;
+        }
+
+        // Initialize app
+        function init() {
+            if (isSetup()) {
+                showScreen('login');
+            } else {
+                showScreen('setup');
+            }
+        }
+
+        // Show specific screen
+        function showScreen(screen) {
+            document.getElementById('loginScreen').classList.add('hidden');
+            document.getElementById('setupScreen').classList.add('hidden');
+            document.getElementById('todoScreen').classList.add('hidden');
+
+            if (screen === 'login') {
+                document.getElementById('loginScreen').classList.remove('hidden');
+                document.getElementById('password').focus();
+            } else if (screen === 'setup') {
+                document.getElementById('setupScreen').classList.remove('hidden');
+                document.getElementById('newPassword').focus();
+            } else if (screen === 'todo') {
+                document.getElementById('todoScreen').classList.remove('hidden');
+                document.getElementById('todoInput').focus();
+                renderTodos();
+                updateGreeting();
+            }
+        }
+
+        // Setup password
+        async function setupPassword() {
+            const newPassword = document.getElementById('newPassword').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            const errorEl = document.getElementById('setupError');
+
+            if (newPassword.length < 4) {
+                errorEl.textContent = 'Password must be at least 4 characters';
+                errorEl.classList.remove('hidden');
+                return;
+            }
+
+            if (newPassword !== confirmPassword) {
+                errorEl.textContent = 'Passwords do not match';
+                errorEl.classList.remove('hidden');
+                return;
+            }
+
+            const hash = await hashPassword(newPassword);
+            localStorage.setItem('todo_password_hash', hash);
+            errorEl.classList.add('hidden');
+            showScreen('todo');
+        }
+
+        // Login
+        async function login() {
+            const password = document.getElementById('password').value;
+            const hash = await hashPassword(password);
+            const storedHash = localStorage.getItem('todo_password_hash');
+
+            if (hash === storedHash) {
+                document.getElementById('loginError').classList.add('hidden');
+                document.getElementById('password').value = '';
+                showScreen('todo');
+            } else {
+                document.getElementById('loginError').classList.remove('hidden');
+            }
+        }
+
+        // Logout
+        function logout() {
+            showScreen('login');
+        }
+
+        // Update greeting based on time
+        function updateGreeting() {
+            const hour = new Date().getHours();
+            let greeting = 'What needs to be done?';
+
+            if (hour < 12) {
+                greeting = 'Good morning! What needs to be done?';
+            } else if (hour < 18) {
+                greeting = 'Good afternoon! What needs to be done?';
+            } else {
+                greeting = 'Good evening! What needs to be done?';
+            }
+
+            document.getElementById('greeting').textContent = greeting;
+        }
+
+        // Get todos from localStorage
+        function getTodos() {
+            const todos = localStorage.getItem('todo_items');
+            return todos ? JSON.parse(todos) : [];
+        }
+
+        // Save todos to localStorage
+        function saveTodos(todos) {
+            localStorage.setItem('todo_items', JSON.stringify(todos));
+        }
+
+        // Add new todo
+        function addTodo() {
+            const input = document.getElementById('todoInput');
+            const text = input.value.trim();
+
+            if (!text) return;
+
+            const todos = getTodos();
+            todos.unshift({
+                id: Date.now(),
+                text: text,
+                completed: false,
+                createdAt: new Date().toISOString()
+            });
+
+            saveTodos(todos);
+            input.value = '';
+            renderTodos();
+        }
+
+        // Handle enter key
+        function handleKeyPress(event) {
+            if (event.key === 'Enter') {
+                addTodo();
+            }
+        }
+
+        // Toggle todo completion
+        function toggleTodo(id) {
+            const todos = getTodos();
+            const todo = todos.find(t => t.id === id);
+            if (todo) {
+                todo.completed = !todo.completed;
+                saveTodos(todos);
+                renderTodos();
+            }
+        }
+
+        // Delete todo
+        function deleteTodo(id) {
+            const todos = getTodos().filter(t => t.id !== id);
+            saveTodos(todos);
+            renderTodos();
+        }
+
+        // Clear completed todos
+        function clearCompleted() {
+            const todos = getTodos().filter(t => !t.completed);
+            saveTodos(todos);
+            renderTodos();
+        }
+
+        // Render todos
+        function renderTodos() {
+            const todos = getTodos();
+            const listEl = document.getElementById('todoList');
+            const emptyEl = document.getElementById('emptyState');
+            const statsEl = document.getElementById('todoStats');
+            const countEl = document.getElementById('todoCount');
+
+            if (todos.length === 0) {
+                listEl.innerHTML = '';
+                emptyEl.classList.remove('hidden');
+                statsEl.classList.add('hidden');
+                return;
+            }
+
+            emptyEl.classList.add('hidden');
+            statsEl.classList.remove('hidden');
+
+            const remaining = todos.filter(t => !t.completed).length;
+            countEl.textContent = `${remaining} task${remaining !== 1 ? 's' : ''} remaining`;
+
+            listEl.innerHTML = todos.map(todo => `
+                <li class="todo-item ${todo.completed ? 'completed' : ''}">
+                    <div class="todo-checkbox" onclick="toggleTodo(${todo.id})">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                    </div>
+                    <span class="todo-text">${escapeHtml(todo.text)}</span>
+                    <button class="todo-delete" onclick="deleteTodo(${todo.id})">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 6h18M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"/>
+                        </svg>
+                    </button>
+                </li>
+            `).join('');
+        }
+
+        // Escape HTML to prevent XSS
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // Handle enter key on password fields
+        document.getElementById('password').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') login();
+        });
+
+        document.getElementById('confirmPassword').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') setupPassword();
+        });
+
+        // Initialize on load
+        init();
+    </script>
+</body>
+</html>
